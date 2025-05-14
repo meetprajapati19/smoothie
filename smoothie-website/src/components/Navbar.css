@@ -1,0 +1,89 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2f7d1f;
+  padding: 20px 40px;
+  position: relative;
+}
+
+.logo {
+  font-weight: 900;
+  font-size: 24px;
+  color: white;
+  font-family: 'Arial Black', sans-serif;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-size: 20px;
+  font-family: 'Gayathri', sans-serif;
+  font-weight: 400;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #f57c00;
+}
+
+.order-button {
+  background-color: #f57c00;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cart-icon {
+  font-size: 20px;
+  margin-left: 10px;
+  color: white;
+}
+
+.nav-toggle {
+  display: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #2f7d1f;
+    padding: 20px 0;
+    display: none;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .order-button {
+    display: none;
+  }
+}

@@ -1,0 +1,120 @@
+.menu-container {
+  background:#086511;
+  padding: 2rem;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+}
+
+.menu-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px #04682c;
+}
+
+.arrow {
+  color: #fff;
+  margin-left: 0.5rem;
+}
+
+.menu-tabs {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-weight: 600;
+  align-items: center;
+}
+
+
+.menu-tabs span {
+  margin: 0 12px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background-color: #e0f2e9;
+  color: #2e7d32;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.menu-tabs .active-tab {
+  background-color: #2e7d32;
+  color: white;
+}
+
+
+.active-tab {
+  background-color: #ffffff;
+  color: #0e7f3d;
+  font-weight: bold;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.menu-card {
+  background-color: #fffceb;
+  border-radius: 20px;
+  padding: 1.8rem;
+  color: #1b5e20;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.menu-card img {
+  width: 80%;
+  height: auto;
+  border-radius: 12px;
+  margin: 0 auto 1rem;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.menu-card img:hover {
+  transform: scale(1.05);
+}
+
+.menu-card h2 {
+  font-size: 1.9rem;
+  margin: 0.5rem 0;
+  font-weight: 700;
+}
+
+.menu-card p {
+  font-size: 1.05rem;
+  color: #015d14;
+  padding: 0 0.8rem;
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+.menu-card button {
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  background-color: #0e7f3d;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.menu-card button:hover {
+  background-color: #0c6932;
+  transform: scale(1.05);
+}
