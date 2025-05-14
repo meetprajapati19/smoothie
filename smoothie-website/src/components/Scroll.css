@@ -7,6 +7,8 @@
   justify-content: center;
   padding: 60px 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* Main content box */
@@ -16,7 +18,7 @@
   border-radius: 25px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   overflow: hidden;
-  max-width: 1500px;   /* <-- increased width */
+  max-width: 1500px;
   width: 95%;
   transition: all 0.3s ease;
 }
@@ -40,7 +42,7 @@
 
 /* Headings */
 .text-section h2 {
-  font-size: 36px;
+  font-size: 2.25rem;
   margin-bottom: 20px;
   color: #0a0a0a;
   font-style: italic;
@@ -55,10 +57,10 @@
 /* Paragraph */
 .text-section p {
   color: #294e04;
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.7;
   margin-bottom: 35px;
-  font-style: nunito;
+  font-family: 'Nunito', sans-serif;
 }
 
 /* Button styling */
@@ -69,7 +71,7 @@
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -79,8 +81,28 @@
   transform: scale(1.05);
 }
 
-/* Responsive */
+/* Large Tablet Responsive */
+@media (max-width: 1200px) {
+  .text-section {
+    padding: 50px 40px;
+  }
+  
+  .text-section h2 {
+    font-size: 2rem;
+  }
+  
+  .text-section p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+}
+
+/* Tablet Responsive */
 @media (max-width: 992px) {
+  .scroll-container {
+    padding: 50px 15px;
+  }
+  
   .scroll-content {
     flex-direction: column;
     max-width: 95%;
@@ -92,15 +114,68 @@
   }
 
   .text-section {
-    padding: 40px;
+    padding: 40px 30px;
     text-align: center;
   }
 
   .text-section h2 {
-    font-size: 28px;
+    font-size: 1.75rem;
   }
 
   .text-section p {
-    font-size: 16px;
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .scroll-container {
+    padding: 40px 15px;
+  }
+  
+  .text-section {
+    padding: 30px 25px;
+  }
+  
+  .text-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .text-section p {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+  }
+  
+  .explore-button {
+    padding: 12px 25px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Small Mobile Responsive */
+@media (max-width: 480px) {
+  .scroll-container {
+    padding: 30px 10px;
+  }
+  
+  .text-section {
+    padding: 25px 20px;
+  }
+  
+  .text-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+  }
+  
+  .text-section p {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .explore-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
   }
 }
