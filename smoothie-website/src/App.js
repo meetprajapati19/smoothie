@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import Testimonials from './components/Testimonials';
 import ContactForm from './components/ContactForm';
 import './App.css';
+import Cart from './components/Cart';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/menu" element={<Menu />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<ContactForm />} />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
         </div>
         <Footer />
