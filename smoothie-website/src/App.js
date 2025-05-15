@@ -8,6 +8,10 @@ import Menu from './components/Menu';
 import About from './components/About';
 import Footer from './components/Footer';
 import Testimonials from './components/Testimonials';
+import ContactForm from './components/ContactForm';
+import ItemDetailPage from './pages/ItemDetailPage';
+
+
 import './App.css';
 
 function App() {
@@ -15,19 +19,22 @@ function App() {
     <Router>
       <div className="App">
         <Navbar />
-        <Routes>
-          <Route path="/" element={
-            <>
-              <Hero />
-              <WhyChoose />
-              <Scroll />
-              <Testimonials/>
-            </>
-          } />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<div>Contact Page</div>} />
-        </Routes>
+        <div className="container">
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Hero />
+                <WhyChoose />
+                <Scroll />
+                <Testimonials/>
+              </>
+            } />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/item/:id" element={<ItemDetailPage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<ContactForm />} />
+          </Routes>
+        </div>       
         <Footer />
       </div>
     </Router>
