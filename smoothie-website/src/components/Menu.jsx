@@ -85,22 +85,24 @@ export default function Menu() {
       
       setLoading(true);
       try {
-        // Uncomment this when Firebase is ready
-        // const querySnapshot = await getDocs(collection(db, 'items'));
-        // const itemsData = querySnapshot.docs
-        //   .map(doc => ({
-        //     id: doc.id,
-        //     ...doc.data()
-        //   }))
-        //   .filter(item => item.type && item.type.toLowerCase() === activeCategory.toLowerCase());
-        // setItems(itemsData);
+        const querySnapshot = await getDocs(collection(db, 'items'));
+        const itemsData = querySnapshot.docs
+          .map(doc => ({
+            id: doc.id,
+            ...doc.data()
+          }))
+          .filter(item => item.type && item.type.toLowerCase() === activeCategory.toLowerCase());
         
-        // For now, use default items
-        const filteredItems = defaultItems.filter(
-          item => item.type.toLowerCase() === activeCategory.toLowerCase()
-        );
-        setItems(filteredItems);
-        
+        if (itemsData.length > 0) {
+          setItems(itemsData);
+        } else {
+          // Fallback to default items if no items found for this category
+          const filteredItems = defaultItems.filter(
+            item => item.type.toLowerCase() === activeCategory.toLowerCase()
+          );
+          setItems(filteredItems);
+          console.log(`No items found in Firebase for category: ${activeCategory}, using defaults`);
+        }
       } catch (error) {
         console.error("Error fetching items:", error);
         // If there's an error, filter the default items
