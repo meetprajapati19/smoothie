@@ -9,8 +9,21 @@ function Navbar() {
   const [cartCount, setCartCount] = useState(0);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen(prevIsMenuOpen => !prevIsMenuOpen);
   };
+
+  // Effect to handle body scroll when menu opens/closes
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('body-no-scroll');
+    } else {
+      document.body.classList.remove('body-no-scroll');
+    }
+    // Cleanup function to remove class if component unmounts while menu is open
+    return () => {
+      document.body.classList.remove('body-no-scroll');
+    };
+  }, [isMenuOpen]);
 
   const handleLinkClick = () => {
     setIsMenuOpen(false);
@@ -55,7 +68,7 @@ function Navbar() {
       </div>
 
       <div className="nav-toggle" onClick={toggleMenu}>
-        ☰
+        {isMenuOpen ? '✕' : '☰'} {/* Change icon based on state */}
       </div>
 
       <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
@@ -67,16 +80,19 @@ function Navbar() {
          
         </li> */}
         <li>
-          <Link to="/cart" className="cart-link">
-          <i className="fas fa-cart-shopping"></i>
+          <Link to="/cart" className="cart-link" onClick={handleLinkClick}>
+            <i className="fas fa-cart-shopping"></i>
             {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
           </Link>
         </li>
       </ul>
 
-      {location.pathname !== '/menu' && (
+      {/* {location.pathname !== '/menu' && (
         <button className="order-button" onClick={handleOrderClick}>Order Now</button>
-      )}
+      )} */}
+
+      {/* Overlay to dim background when menu is open */}
+      {isMenuOpen && <div className="nav-overlay" onClick={toggleMenu}></div>}
     </nav>
   );
 }

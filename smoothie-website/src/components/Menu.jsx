@@ -53,7 +53,7 @@ export default function Menu() {
     };
     fetchCategories();
   }, []);
-
+  
   // Fetch items from Firebase based on active category
   useEffect(() => {
     const fetchItems = async () => {

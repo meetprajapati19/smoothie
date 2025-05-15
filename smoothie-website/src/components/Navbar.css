@@ -1,10 +1,16 @@
+/* Add at the top of your file or in a global CSS file */
+.body-no-scroll {
+  overflow: hidden;
+}
+
 .navbar {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   background-color: #2f7d1f;
   padding: 20px 40px;
-  position: relative;
+  position: sticky; /* Make navbar sticky */
+  top: 0;
   z-index: 1000;
 }
 
@@ -78,6 +84,23 @@
   font-size: 28px;
   color: white;
   cursor: pointer;
+  z-index: 1001; /* Ensure toggle is above overlay */
+  position: relative; /* For z-index to work */
+}
+
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 998; /* Below nav-links, above page content */
+  display: none; /* Hidden by default */
+}
+
+.nav-links.active + .nav-overlay {
+  display: block; /* Show overlay when menu is active */
 }
 
 .cart-link {
@@ -117,21 +140,47 @@
 
   .nav-links {
     flex-direction: column;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background-color: #2f7d1f;
-    padding: 20px 0;
-    display: none;
-    text-align: center;
-    gap: 20px;
-    z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0; /* Start from the top */
+    left: -100%; /* Start off-screen to the left for slide-in effect */
+    width: 80%; /* Or a fixed width like 300px */
+    max-width: 320px;
+    height: 100vh; /* Full viewport height */
+    background-color: #2a6d1b; /* Slightly darker shade */
+    padding: 60px 20px 20px; /* Add padding for close button and content */
+    display: flex; /* Keep flex for alignment */
+    text-align: left;
+    gap: 25px; /* Increased gap */
+    z-index: 999;
+    box-shadow: 4px 0px 15px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow-y: auto;
+    transition: left 0.3s ease-in-out; /* Smooth slide-in transition */
   }
 
   .nav-links.active {
-    display: flex;
+    left: 0; /* Slide in from the left */
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    font-size: 1.1rem; /* Slightly larger font */
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: block; /* Make links take full width for easier tapping */
+    text-align: left;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus {
+    color: #2f7d1f;
+    background-color: rgba(255, 255, 255, 0.9);
   }
 
   .order-button {
