@@ -162,6 +162,17 @@
   color: white;
 }
 
+.no-data {
+  text-align: center;
+  margin: 40px auto;
+  padding: 20px;
+  font-size: 18px;
+  color: #777;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  max-width: 600px;
+}
+
 /* Tablet responsiveness */
 @media (max-width: 768px) {
   .menu-title {
