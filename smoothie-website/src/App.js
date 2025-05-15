@@ -8,6 +8,7 @@ import Menu from './components/Menu';
 import About from './components/About';
 import Footer from './components/Footer';
 import Testimonials from './components/Testimonials';
+import ContactForm from './components/ContactForm';
 import './App.css';
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
             } />
             <Route path="/menu" element={<Menu />} />
             <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<div>Contact Page</div>} />
+            <Route path="/contact" element={<ContactForm />} />
           </Routes>
         </div>
         <Footer />

@@ -1,10 +1,15 @@
 .navbar {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   background-color: #2f7d1f;
   padding: 20px 40px;
   position: relative;
+  z-index: 1000;
+}
+
+.left-section {
+  justify-self: start;
 }
 
 .logo {
@@ -12,6 +17,7 @@
   font-size: 24px;
   color: white;
   font-family: 'Arial Black', sans-serif;
+  margin: 0;
 }
 
 .nav-links {
@@ -25,6 +31,8 @@
   font-size: 20px;
   font-family: 'Gayathri', sans-serif;
   font-weight: 400;
+  justify-self: center;
+  grid-column: 2;
 }
 
 .nav-links a {
@@ -46,12 +54,23 @@
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s;
+  justify-self: end;
 }
 
 .cart-icon {
-  font-size: 20px;
-  margin-left: 10px;
   color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon i {
+  font-size: 1.3rem;
+}
+
+.cart-icon:hover {
+  color: #f57c00;
 }
 
 .nav-toggle {
@@ -62,8 +81,15 @@
 }
 
 @media (max-width: 768px) {
+  .navbar {
+    grid-template-columns: 1fr auto auto;
+    padding: 15px 20px;
+  }
+
   .nav-toggle {
     display: block;
+    grid-column: 2;
+    margin-left: 20px;
   }
 
   .nav-links {
@@ -77,6 +103,8 @@
     display: none;
     text-align: center;
     gap: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   .nav-links.active {
@@ -84,6 +112,8 @@
   }
 
   .order-button {
-    display: none;
+    grid-column: 3;
+    padding: 8px 15px;
+    font-size: 14px;
   }
 }

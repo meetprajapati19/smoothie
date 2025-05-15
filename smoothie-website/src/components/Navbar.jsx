@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+  };
+
+  const handleOrderClick = () => {
+    navigate('/menu');
   };
 
   return (
@@ -20,14 +30,18 @@ function Navbar() {
       </div>
 
       <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/menu">Menu</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
-        <span className="cart-icon">🛒</span>
+        <li><Link to="/" onClick={handleLinkClick}>Home</Link></li>
+        <li><Link to="/menu" onClick={handleLinkClick}>Menu</Link></li>
+        <li><Link to="/about" onClick={handleLinkClick}>About</Link></li>  
+        <li><Link to="/contact" onClick={handleLinkClick}>Contact</Link></li>
+        <li className="cart-icon">
+          <i className="fas fa-cart-shopping"></i>
+        </li>
       </ul>
 
-      <button className="order-button">Order Now</button>
+      {location.pathname !== '/menu' && (
+        <button className="order-button" onClick={handleOrderClick}>Order Now</button>
+      )}
     </nav>
   );
 }
