@@ -86,7 +86,7 @@ export default function Cart() {
   return (
     <div className="cart-page">
       <div className="cart-container">
-        <h1 className="cart-title">Your Cart</h1>
+        <h1 className="cart-title">Checkout</h1>
         
         {cartItems.length === 0 ? (
           <div className="empty-cart">
@@ -111,8 +111,8 @@ export default function Cart() {
                   <div className="item-details">
                     <h3>{item.name}</h3>
                     <p>{item.ingredients}</p>
-                    <div className="price">₹{item.price}</div>
                   </div>
+                  <div className="price">₹{item.price}</div>
                   <div className="quantity-controls">
                     <button onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</button>
                     <span>{item.quantity}</span>
@@ -124,6 +124,7 @@ export default function Cart() {
                   <button 
                     className="remove-item"
                     onClick={() => removeItem(item.id)}
+                    aria-label="Remove item"
                   >
                     ×
                   </button>
@@ -133,24 +134,13 @@ export default function Cart() {
 
             <div className="cart-summary">
               <div className="summary-row">
-                <span>Subtotal:</span>
-                <span>₹{total}</span>
-              </div>
-              <div className="summary-row">
-                <span>Tax (5%):</span>
-                <span>₹{(total * 0.05).toFixed(2)}</span>
-              </div>
-              <div className="summary-row total">
-                <span>Total:</span>
-                <span>₹{(total * 1.05).toFixed(2)}</span>
+                <span>Total</span>
+                <span>₹{total.toFixed(2)}</span>
               </div>
               
               <div className="cart-actions">
-                <button onClick={clearCart} className="clear-cart">
-                  Clear Cart
-                </button>
                 <button onClick={handleCheckout} className="checkout">
-                  Proceed to Checkout
+                  Place Order
                 </button>
               </div>
             </div>

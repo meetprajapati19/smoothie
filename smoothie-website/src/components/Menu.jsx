@@ -129,15 +129,13 @@ export default function Menu() {
   return (
     <div className="menu-container">
       <div className="menu-header">
-      <h1 className="menu-title">
-        MENU <span className="arrow">→</span>
-      </h1>
+        <h1 className="menu-title">MENU</h1>
         {cartCount > 0 && (
           <button 
             className="view-cart-button"
             onClick={() => navigate('/cart')}
           >
-            View Cart ({cartCount} items)
+            View Cart ({cartCount})
           </button>
         )}
       </div>
@@ -150,43 +148,43 @@ export default function Menu() {
 
       {!loading && categories.length > 0 && (
         <>
-      <div className="menu-tabs">
+          <div className="menu-tabs">
             {categories.map((category, index) => (
-          <span
-            key={index}
-            className={activeCategory === category ? "active-tab" : ""}
-            onClick={() => setActiveCategory(category)}
-          >
-            {category}
-          </span>
-        ))}
-      </div>
+              <span
+                key={index}
+                className={activeCategory === category ? "active-tab" : ""}
+                onClick={() => setActiveCategory(category)}
+              >
+                {category}
+              </span>
+            ))}
+          </div>
 
-      <div className="menu-grid">
+          <div className="menu-grid">
             {items.length === 0 ? (
               <div className="no-data">No items available in this category.</div>
-        ) : (
+            ) : (
               items.map((item) => {
                 const quantity = getItemQuantity(item.id);
                 return (
-            <div className="menu-card" key={item.id}>
+                  <div className="menu-card" key={item.id}>
+                    <img 
+                      src={`/${item.image || 'greensmoothie.jpg'}`} 
+                      alt={item.name} 
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/greensmoothie.jpg';
+                      }}
+                    />
                     <div className="card-content">
-              <img 
-                src={`/${item.image || 'greensmoothie.jpg'}`} 
-                alt={item.name} 
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = '/greensmoothie.jpg';
-                }}
-              />
-              <h2>{item.name}</h2>
-              <p>{item.ingredients}</p>
-              <div className="price-container">
-                <div className="size-price">
-                  <span>Price:</span>
-                  <span>₹{item.price}</span>
-                </div>
-              </div>
+                      <h2>{item.name}</h2>
+                      <p>{item.ingredients}</p>
+                    </div>
+                    <div className="price-container">
+                      <div className="size-price">
+                        <span>Price:</span>
+                        <span>₹{item.price}</span>
+                      </div>
                     </div>
                     {quantity > 0 ? (
                       <div className="quantity-controls">
@@ -202,11 +200,11 @@ export default function Menu() {
                         Add to Cart
                       </button>
                     )}
-            </div>
+                  </div>
                 );
               })
-        )}
-      </div>
+            )}
+          </div>
         </>
       )}
     </div>
